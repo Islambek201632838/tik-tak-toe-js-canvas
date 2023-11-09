@@ -1,0 +1,257 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+  }
+  
+  :root {
+    --cell-size: 100px;
+    --mark-size: calc(var(--cell-size) * .9);
+  }
+  
+  body {
+    margin: 0;
+    background-color: #1b2b34;
+  }
+
+  .form {
+    text-align: center;
+    max-width: 600px;
+    margin: 5px auto;
+    padding: 20px;
+    background-color: #f9f9f9e9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+
+  #submit {
+    border-radius: 5px;
+    padding: 10px 20px; 
+    font-size: 20px;
+    background-color: #324f81;
+    color: #ffffff;
+    border: none;
+    cursor: pointer; 
+    transition: background-color 0.3s; 
+  }
+  
+  #submit:hover {
+    background-color: #31589c;
+  }
+  
+
+#input-player1, #input-player2 {
+    margin: 10px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5%;
+    outline: none;
+    border: none;
+}
+
+  .input-container {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+  #dimension, #dimension option {
+    padding: 5px 2px;
+    border: none;
+    font-size: 15px;
+    outline: none;
+  }
+  
+  .board {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+  }
+
+  .hidden {
+    display: none;
+  }
+  
+  .cell {
+    width: var(--cell-size);
+    height: var(--cell-size);
+    background-color: #1f3540;
+    margin: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .cell.x,
+  .cell.circle {
+    cursor: not-allowed;
+  }
+  
+  .cell.x::before,
+  .cell.x::after,
+  .cell.circle::before {
+    background-color: white;
+  }
+  
+  .board.x .cell:not(.x):not(.circle):hover::before,
+  .board.x .cell:not(.x):not(.circle):hover::after,
+  .board.circle .cell:not(.x):not(.circle):hover::before {
+    background-color: rgba(75, 118, 145, 0.9);
+  }
+  
+  .cell.x::before,
+  .cell.x::after,
+  .board.x .cell:not(.x):not(.circle):hover::before,
+  .board.x .cell:not(.x):not(.circle):hover::after {
+    content: '';
+    position: absolute;
+    width: calc(var(--mark-size) * .15);
+    height: var(--mark-size);
+  }
+  
+  .cell.x::before,
+  .board.x .cell:not(.x):not(.circle):hover::before {
+    transform: rotate(45deg);
+  }
+  
+  .cell.x::after,
+  .board.x .cell:not(.x):not(.circle):hover::after {
+    transform: rotate(-45deg);
+  }
+  
+  .cell.circle::before,
+  .cell.circle::after,
+  .board.circle .cell:not(.x):not(.circle):hover::before,
+  .board.circle .cell:not(.x):not(.circle):hover::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+  }
+  
+  .cell.circle::before,
+  .board.circle .cell:not(.x):not(.circle):hover::before {
+    width: var(--mark-size);
+    height: var(--mark-size);
+  }
+  
+  .cell.circle::after,
+  .board.circle .cell:not(.x):not(.circle):hover::after {
+    width: calc(var(--mark-size) * .7);
+    height: calc(var(--mark-size) * .7);
+    background-color:#1f3540;
+  }
+  
+  .winning-message {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(27, 43, 52, 0.95);
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 30px;
+    flex-direction: column;
+  }
+  
+  .winning-message button {
+    font-size: 20px;
+    background-color: white;
+    border: 1px solid black;
+    padding: 10px 10px;
+    cursor: pointer;
+    margin: 10px 0;
+    border-radius: 5%;
+  }
+  
+  .winning-message button:hover {
+    background-color: rgba(255, 255, 255, 0.927);
+    color: black;
+    padding: 10px 10px;
+    border-color: white;
+    margin: 10px 0;
+    border-radius: 5%;
+  }
+  
+  .winning-message.show {
+    display: flex;
+  }
+
+  .winning-message:first-child{
+    margin-bottom: 20px;
+  }
+  
+  .leader-board {
+    font-size: 25px;
+  }
+
+  .win-animation {
+    animation-name: win-animation;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+  }
+  
+  @keyframes win-animation {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.2);
+    }
+  }
+  
+  
+
+ 
+
+  /* Style the table */
+.leader-board table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 16px;
+    margin-top: 15px;
+  }
+  
+  /* Style the table headers */
+.leader-board thead th {
+    background-color: lightslategray;
+    color: white;
+    font-size: 18px;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  /* Style the table rows */
+ .leader-board tbody tr {
+    text-align: center;
+  }
+  
+  /* Style alternating rows for better readability */
+ .leader-board tbody tr:nth-child(even) {
+    background-color: rgba(34, 53, 64, 0.95);
+  }
+  
+  /* Add hover effect on rows */
+  .leader-board tbody tr:hover {
+    background-color: rgba(52, 84, 102, 0.95);
+  }
+  
+  /* Style the table cells */
+  .leader-board td {
+    padding: 10px;
+  }
+  
+  /* Add border to table cells */
+  .leader-board td, th {
+    border: 1px solid #ddd;
+  }
+  

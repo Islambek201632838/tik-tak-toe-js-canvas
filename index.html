@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+  <title>Крестики нолики</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.0/dist/confetti.browser.min.js"></script>
+<body>
+        <form id ='form' class = "form">
+            <h1>Крестики-Нолики</h1>
+            <input type="text" id="input-player1" placeholder="Игрок 1 (Нолик)" required>
+            <input type="text" id="input-player2" placeholder="Игрок 2 (Крестик)" required>
+            <div style="font-size: 20px; margin-bottom: 10px;"> Размер
+              <select name="" id="dimension">
+                <option value='3'>3x3</option>
+                <option value='4'>4x4</option>
+                <option value='5'>5x5</option>
+              </select></div>
+            <input type="submit" id ='submit' value = 'Приступить'>
+            
+        </form>
+
+  <div class="board hidden" id="board">
+  </div>
+  <div class="winning-message" id="winningMessage">
+    <div id="confetti"></div>
+    <div data-winning-message-text></div>
+    <button id="restartButton">Возобновить</button>
+    <button id="changePlayerButton">Изменить имена игроков</button>
+   <div id="leader-board" class="leader-board" style="margin: 20px 0 10px 0">
+    <div style =`text-align: 'center'`>Рейтинг</div>
+    <table border="1">
+      <thead>
+        <th>Место</th>
+        <th>Игрок</th>
+        <th>Побед</th>
+      </thead>
+      <tbody id="tableBody">
+      </tbody>
+     </table>
+  </div>
+   
+  </div>
+
+</body>
+
+</html>
