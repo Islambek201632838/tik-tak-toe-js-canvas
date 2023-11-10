@@ -131,7 +131,7 @@ function createConfetti(container, canvas) {
 
 
 function createLeaderBoard(circleTurn) {
-  let winner = circleTurn ? playerName1 : playerName2;
+  let winner = circleTurn ? playerName2 : playerName1;
   winningMessageTextElement.innerText = `${winner} Выграл!`;
   const playerIndex = leaderBoard.findIndex(item => item.player === winner);
   if (playerIndex !== -1) {
