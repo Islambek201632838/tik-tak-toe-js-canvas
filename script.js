@@ -14,7 +14,7 @@ const tableBody = document.getElementById('tableBody')
 const rating = document.getElementById('leader-board')
 let dimension = 0;
 
-let circleTurn = false
+let circleTurn
 
 
 
